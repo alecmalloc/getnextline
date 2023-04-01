@@ -8,5 +8,9 @@
 #define BUFFER_SIZE 4
 
 char    *get_next_line(int fd);
+int     is_next_line(char *str);
+char	*ft_strcpy(char *dest, char *src);
+char    *buff_trim(char *str);
+void    storj_trim(char *str);
 
 #endif
