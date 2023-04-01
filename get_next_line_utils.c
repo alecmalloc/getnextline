@@ -14,18 +14,18 @@ int     is_next_line(char *str)
     return (0);
 }
 
-char	*ft_strcpy(char *dest, char *src)
+char *ft_strcpy(char *dest, char *src)
 {
-	int i;
+    int i;
 
     i = 0;
-	while (src[i])
-	{
-		dest[i] = src[i];
-		i++;
-	}
-	dest[i + 1] = src[i];
-	return (dest);
+    while (src[i])
+    {
+        dest[i] = src[i];
+        i++;
+    }
+    dest[i] = '\0';
+    return (dest);
 }
 
 char *buff_trim(char *str)
@@ -34,7 +34,11 @@ char *buff_trim(char *str)
 
     i = 0;
     while (str[i] != '\n')
+    {
+        if (!str[i])
+            return (str);  // return str if no '\n' found
         i++;
+    }
     while (str[i])
     {
         str[i] = 0;
@@ -43,9 +47,10 @@ char *buff_trim(char *str)
     return (str);
 }
 
-void    storj_trim(char *str)
+void storj_trim(char *str)
 {
-    while (*str != '\n')
+    while (*str != '\n' && *str != '\0')
         str++;
-    str++;
+    if (*str == '\n')
+        str++;
 }

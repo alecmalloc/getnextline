@@ -5,7 +5,7 @@
 #include <unistd.h>
 
 // delete when PUSH !
-#define BUFFER_SIZE 4
+#define BUFFER_SIZE 10
 
 char    *get_next_line(int fd);
 int     is_next_line(char *str);

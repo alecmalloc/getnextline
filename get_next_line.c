@@ -8,12 +8,12 @@ char    *get_next_line(int fd)
 
     if (fd < 0 || BUFFER_SIZE <= 0)
 		return (0);
-    if (!(buffer = malloc(sizeof(char) * BUFFER_SIZE +1)))
+    if (!(buffer = malloc(sizeof(char) * (BUFFER_SIZE +1))))
         return (0);
-
+        
     // storj_packer(check if storj is filled and if it is then put it on beginning of buff);
 
-    while(read_ret = read(fd, buffer, BUFFER_SIZE) > 0)
+    while ((read_ret = read(fd, buffer, BUFFER_SIZE)) > 0)
     {
         if(is_next_line(buffer))
         {
@@ -26,7 +26,6 @@ char    *get_next_line(int fd)
     }
     // if (read_ret == 0)
     //         END OF FILE
-
 
     return (buffer);
 }
