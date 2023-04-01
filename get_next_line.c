@@ -1,44 +1,29 @@
-#include <stdlib.h>
-#include <unistd.h>
+#include "get_next_line.h"
 
-#define BUFFERSIZE 42
-
-char *storj_to_buff(char *storj, char * buff, int i)
-{
-    int n;
-
-    buff = malloc(i * sizeof(char) + 1);
-    n = 0;
-    while (i--)
-    {
-        buff[n] = storj[n];
-    }
-
-    //flush storj
-
-}
-
-char *get_next_line(int fd)
+char    *get_next_line(int fd)
 {
     int i;
-    int nl;
     char c;
-    static char storj[BUFFERSIZE + 1];
-    char    *buff;
+    char *buffer;
+    static char storj[BUFFER_SIZE + 1];
+
+    if (fd < 0 || BUFFER_SIZE <= 0)
+		return (0);
+
+    buffer = malloc(sizeof(char) * BUFFER_SIZE +1);
+    if (!buffer)
+        return 0;
+
+    storj_packer(check if storj is filled and if it is then put it on beginning of buff)
 
     i = 0;
-    nl = 0;
-    while((read(fd, &c, 1)) > 0)
+    while(read(fd, buffer, BUFFER_SIZE) > 0)
     {
-        storj[i] = c;
-        if (c == '\n')
-        {
-            i++;
-            storj[i] = '\0';
-            break;
-        }
-      
+        check buff for newline -> if none found skip the rest
+            copy buff to storj
+            remove all of buff after nl
+            remove all of storj before nl
     }
 
-    return (buff);
+    return (buffer);
 }
