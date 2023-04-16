@@ -15,7 +15,8 @@ char    *get_next_line(int fd)
     if (!(line = malloc(sizeof(char) * (BUFFER_SIZE + 1))))
         return (0);
 
-    // storj_packer(check if storj is filled and if it is then put it on beginning of buff);
+    if(storj[0] != 0)
+        printf("\nstor has value\n");
 
     while ((read_ret = read(fd, buffer, BUFFER_SIZE)) > 0)
     {
