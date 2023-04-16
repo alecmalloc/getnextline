@@ -4,12 +4,14 @@
 #include <stdlib.h>
 #include <unistd.h>
 
+// delete when push !
+#include <stdio.h>
+
 // delete when PUSH !
-#define BUFFER_SIZE 5
+#define BUFFER_SIZE 8
 
 char    *get_next_line(int fd);
 int     is_next_line(char *str);
-char    *addmore(char *buffer, char *line);
 size_t	ft_strlen(const char *s);
 char	*ft_strjoin(char const *s1, char const *s2);
 char    *preline(char *buffer);

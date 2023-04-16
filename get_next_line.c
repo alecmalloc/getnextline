@@ -21,7 +21,7 @@ char    *get_next_line(int fd)
     {
         if(is_next_line(buffer))
         {
-            line = ft_strjoin(line, checkandsplit(buffer, storj, line));
+            line = checkandsplit(buffer, storj, line);
             break;
         }
         line = ft_strjoin(line, buffer);

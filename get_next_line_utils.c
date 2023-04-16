@@ -55,9 +55,16 @@ size_t	ft_strlen(const char *s)
 
 char    *checkandsplit(char *buffer, char *storj, char *line)
 {
-    line = ft_strjoin(preline(buffer), line);
-    storj = ft_strjoin(postline(buffer), storj);
+	char *resPreline;
+	char *resPostline;
 
+	resPreline = preline(buffer);
+	resPostline = postline(buffer);
+    line = ft_strjoin(line, resPreline);
+    storj = ft_strjoin(storj, resPostline);
+	printf("storj: .%s. \n", storj);
+	free(resPreline);
+	free(resPostline);
     return(line);
 }
 
@@ -75,7 +82,7 @@ char *preline(char *buffer)
     if (!(preline = malloc(sizeof(char) * (i + 1))))
         return (0);
     ft_strlcpy(preline, buffer, i + 1);
-    return preline;
+    return (preline);
 }
 
 char *postline(char *buffer)
@@ -99,7 +106,7 @@ char *postline(char *buffer)
         return (0);
     ft_strlcpy(postline, buffer + j, (i - j + 1));
     postline[i - j] = '\0';
-    return postline;
+    return (postline);
 }
 
 size_t	ft_strlcpy(char *dest, const char *src, size_t destsize)
