@@ -14,43 +14,106 @@ int     is_next_line(char *str)
     return (0);
 }
 
-char *ft_strcpy(char *dest, char *src)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-    int i;
+	char	*concat_str;
+	int		i;
+	int		j;
 
-    i = 0;
-    while (src[i])
-    {
-        dest[i] = src[i];
-        i++;
-    }
-    dest[i] = '\0';
-    return (dest);
+	i = 0;
+	j = 0;
+	if (s1 == 0 || s2 == 0)
+		return (0);
+	if(!(concat_str = malloc(sizeof(char) * ((ft_strlen(s1) + ft_strlen(s2)) + 1))))
+		return (0);
+	while (s1[i] != '\0')
+	{
+		concat_str[i] = s1[i];
+		i++;
+	}
+	while (s2[j] != '\0')
+	{
+		concat_str[i] = s2[j];
+		i++;
+		j++;
+	}
+	concat_str[i] = '\0';
+	return (concat_str);
 }
 
-char *buff_trim(char *str)
+size_t	ft_strlen(const char *s)
 {
-    int i;
+	size_t	x;
 
-    i = 0;
-    while (str[i] != '\n')
-    {
-        if (!str[i])
-            return (str);  // return str if no '\n' found
-        i++;
-    }
-    while (str[i])
-    {
-        str[i] = 0;
-        i++;
-    }
-    return (str);
+	x = 0;
+	while (s[x] != '\0')
+	{
+		x++;
+	}
+	return (x);
 }
 
-void storj_trim(char *str)
+char    *checkandsplit(char *buffer, char *storj, char *line)
 {
-    while (*str != '\n' && *str != '\0')
-        str++;
-    if (*str == '\n')
-        str++;
+    line = ft_strjoin(preline(buffer), line);
+    storj = ft_strjoin(postline(buffer), storj);
+
+    return(line);
+}
+
+char *preline(char *buffer)
+{
+	int i;
+	char *preline;
+    if (!buffer)
+        return (0);
+    i = 0;
+    while (buffer[i] && buffer[i] != '\n')
+        i++;
+    if (!buffer[i])
+        return (0);
+    if (!(preline = malloc(sizeof(char) * (i + 1))))
+        return (0);
+    ft_strlcpy(preline, buffer, i + 1);
+    return preline;
+}
+
+char *postline(char *buffer)
+{
+	int i;
+	int j;
+	char *postline;
+    if (!buffer)
+        return (0);
+
+    i = 0;
+    while (buffer[i] && buffer[i] != '\n')
+        i++;
+    if (!buffer[i])
+        return (0);
+    i++;
+    j = i;
+    while (buffer[i] && buffer[i] != '\n')
+        i++;
+    if(!(postline = malloc(sizeof(char) * (i - j + 1))))
+        return (0);
+    ft_strlcpy(postline, buffer + j, (i - j + 1));
+    postline[i - j] = '\0';
+    return postline;
+}
+
+size_t	ft_strlcpy(char *dest, const char *src, size_t destsize)
+{
+	size_t	i;
+
+	i = 0;
+	if (destsize == 0)
+		return (ft_strlen(src));
+	while (src[i] != '\0' && i < (destsize - 1))
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (ft_strlen(src));
 }

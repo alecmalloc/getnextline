@@ -8,13 +8,16 @@ char *get_next_line(int fd);
 int main() {
     int fd;
     char *line;
-    int BUFFERSIZE = 42;
 
     fd = open("textfile.txt", O_RDONLY);
 
     line = get_next_line(fd);
     printf("%s", line);
     free(line);
+
+    // line = get_next_line(fd);
+    // printf("%s", line);
+    // free(line);
 
     close(fd);
     return (0);
