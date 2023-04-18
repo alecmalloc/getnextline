@@ -15,14 +15,18 @@ char    *get_next_line(int fd)
     if (!(line = malloc(sizeof(char) * (BUFFER_SIZE + 1))))
         return (0);
 
-    if(storj[0] != 0)
-        printf("\nstor has value\n");
+    if ((ft_strlen(storj)) > 0)
+        line = ft_strjoin(line, storjGet(storj));
+
+    printf("\n line? .%s.\n", line);
+    printf("\n STORJLEN .%zu.\n", ft_strlen(storj));
 
     while ((read_ret = read(fd, buffer, BUFFER_SIZE)) > 0)
     {
         if(is_next_line(buffer))
         {
             line = checkandsplit(buffer, storj, line);
+            ft_strlcpy(storj, postline(buffer), ft_strlen(buffer));
             break;
         }
         line = ft_strjoin(line, buffer);
@@ -30,6 +34,8 @@ char    *get_next_line(int fd)
 
     // if (read_ret == 0)
     //         END OF FILE
+
+    printf("\n storjt2: .%s. \n", storj);
 
     free(buffer);
     return (line);

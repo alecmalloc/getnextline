@@ -18,5 +18,6 @@ char    *preline(char *buffer);
 char    *postline(char *buffer);
 char    *checkandsplit(char *buffer, char *storj, char *line);
 size_t	ft_strlcpy(char *dest, const char *src, size_t destsize);
+char    *storjGet(char *storj);
 
 #endif

@@ -56,15 +56,10 @@ size_t	ft_strlen(const char *s)
 char    *checkandsplit(char *buffer, char *storj, char *line)
 {
 	char *resPreline;
-	char *resPostline;
 
 	resPreline = preline(buffer);
-	resPostline = postline(buffer);
     line = ft_strjoin(line, resPreline);
-    storj = ft_strjoin(storj, resPostline);
-	printf("storj: .%s. \n", storj);
 	free(resPreline);
-	free(resPostline);
     return(line);
 }
 
@@ -123,4 +118,19 @@ size_t	ft_strlcpy(char *dest, const char *src, size_t destsize)
 	}
 	dest[i] = '\0';
 	return (ft_strlen(src));
+}
+
+char *storjGet(char *storj)
+{
+	int i;
+	int lenPart;
+	char *thatPart;
+
+	i = (ft_strlen(storj) - 1);
+	while (storj[i] != '\n')
+		i--;
+	thatPart = (storj + i);
+
+
+	return (thatPart);
 }
