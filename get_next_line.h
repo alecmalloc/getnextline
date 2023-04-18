@@ -8,7 +8,7 @@
 #include <stdio.h>
 
 // delete when PUSH !
-#define BUFFER_SIZE 25
+#define BUFFER_SIZE 200
 
 char    *get_next_line(int fd);
 int     is_next_line(char *str);
@@ -19,5 +19,7 @@ char    *postline(char *buffer);
 char    *checkandsplit(char *buffer, char *storj, char *line);
 size_t	ft_strlcpy(char *dest, const char *src, size_t destsize);
 char    *storjGet(char *storj);
+void    *ft_calloc(size_t count);
+void    ft_bzero(void *s, int n);
 
 #endif

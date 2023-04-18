@@ -11,13 +11,14 @@ int main() {
 
     fd = open("textfile.txt", O_RDONLY);
 
-    line = get_next_line(fd);
-    printf("%s \n", line);
-    free(line);
-
-    line = get_next_line(fd);
-    printf("%s \n", line);
-    free(line);
+    while(1)
+    {
+        if ((line = get_next_line(fd)) == 0)
+            break;
+        printf("OUTPUT: %s \n", line);
+        printf("------------------------ \n");
+        free(line);
+    }
 
     close(fd);
     return (0);

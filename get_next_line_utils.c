@@ -24,7 +24,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	j = 0;
 	if (s1 == 0 || s2 == 0)
 		return (0);
-	if(!(concat_str = malloc(sizeof(char) * ((ft_strlen(s1) + ft_strlen(s2)) + 1))))
+	if(!(concat_str = ft_calloc(sizeof(char) * ((ft_strlen(s1) + ft_strlen(s2)) + 1))))
 		return (0);
 	while (s1[i] != '\0')
 	{
@@ -74,7 +74,7 @@ char *preline(char *buffer)
         i++;
     if (!buffer[i])
         return (0);
-    if (!(preline = malloc(sizeof(char) * (i + 1))))
+    if (!(preline = ft_calloc(sizeof(char) * (i + 1))))
         return (0);
     ft_strlcpy(preline, buffer, i + 1);
     return (preline);
@@ -97,7 +97,7 @@ char *postline(char *buffer)
     j = i;
     while (buffer[i] && buffer[i] != '\n')
         i++;
-    if(!(postline = malloc(sizeof(char) * (i - j + 1))))
+    if(!(postline = ft_calloc(sizeof(char) * (i - j + 1))))
         return (0);
     ft_strlcpy(postline, buffer + j, (i - j + 1));
     postline[i - j] = '\0';
@@ -126,11 +126,36 @@ char *storjGet(char *storj)
 	int lenPart;
 	char *thatPart;
 
-	i = (ft_strlen(storj) - 1);
+	i = (ft_strlen(storj));
 	while (storj[i] != '\n')
 		i--;
-	thatPart = (storj + i);
 
+	thatPart = (storj + i + 1);
 
+	printf("thatPart .%s. \n", thatPart);
 	return (thatPart);
+}
+
+void	*ft_calloc(size_t count)
+{
+	void	*arr;
+
+	arr = malloc(count);
+	if (arr == NULL)
+		return (NULL);
+	ft_bzero(arr, count);
+	return (arr);
+}
+
+void	ft_bzero(void *s, int n)
+{
+	unsigned char	*tmps;
+
+	tmps = s;
+	while (n > 0)
+	{
+		*tmps = 0;
+		tmps++;
+		n--;
+	}
 }

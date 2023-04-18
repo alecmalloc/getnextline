@@ -10,16 +10,18 @@ char    *get_next_line(int fd)
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
 		return (0);
-    if (!(buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1))))
+    if (!(buffer = ft_calloc(sizeof(char) * (BUFFER_SIZE + 1))))
         return (0);
-    if (!(line = malloc(sizeof(char) * (BUFFER_SIZE + 1))))
+    if (!(line = ft_calloc(sizeof(char) * (BUFFER_SIZE + 1))))
         return (0);
+
+    printf("prestorj .%s.\n", storj);
 
     if ((ft_strlen(storj)) > 0)
-        line = ft_strjoin(line, storjGet(storj));
+        line = ft_strjoin(line, storj);
 
-    printf("\n line? .%s.\n", line);
-    printf("\n STORJLEN .%zu.\n", ft_strlen(storj));
+    printf("line? .%s.\n", line);
+    printf("STORJLEN .%zu.\n", ft_strlen(storj));
 
     while ((read_ret = read(fd, buffer, BUFFER_SIZE)) > 0)
     {
@@ -32,10 +34,10 @@ char    *get_next_line(int fd)
         line = ft_strjoin(line, buffer);
     }
 
-    // if (read_ret == 0)
-    //         END OF FILE
+    if (read_ret == 0)
+        return (0);
 
-    printf("\n storjt2: .%s. \n", storj);
+    printf("storjt2: .%s. \n", storj);
 
     free(buffer);
     return (line);
