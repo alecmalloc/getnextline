@@ -14,8 +14,7 @@ int main() {
 
     while(i--)
     {
-        if ((line = get_next_line(fd)) == 0)
-            break;
+        line = get_next_line(fd);
         printf("OUTPUT: %s \n", line);
         printf("------------------------ \n");
         free(line);

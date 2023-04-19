@@ -22,22 +22,15 @@ char    *get_next_line(int fd)
     {
         if(is_next_line(buffer))
         {
-            line = checkandsplit(buffer, storj, line);
+            line = checkandsplit(buffer, line);
+            printf("storjrn: .%s. postlinebuff: .%s. strlenbuff: .%zu. \n", storj, postline(buffer), ft_strlen(buffer));
             ft_strlcpy(storj, postline(buffer), ft_strlen(buffer));
+            printf("storjrn: .%s. postlinebuff: .%s. strlenbuff: .%zu. \n", storj, postline(buffer), ft_strlen(buffer));
             break;
         }
         line = ft_strjoin(line, buffer);
     }
-    if (read_ret == -1)
-        return (0);
-    if (read_ret == 0)
-        {
-            while ((read(fd, buffer, 1)) > 0)
-            {
-                line = ft_strjoin(line, buffer);
-                free(buffer);
-            }
-        }
+    printf("poststorj: .%s. \n", storj);
     free(buffer);
     return (line);
 }

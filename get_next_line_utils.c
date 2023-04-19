@@ -53,7 +53,7 @@ size_t	ft_strlen(const char *s)
 	return (x);
 }
 
-char    *checkandsplit(char *buffer, char *storj, char *line)
+char    *checkandsplit(char *buffer, char *line)
 {
 	char *resPreline;
 

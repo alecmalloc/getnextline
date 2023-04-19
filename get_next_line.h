@@ -16,7 +16,7 @@ size_t	ft_strlen(const char *s);
 char	*ft_strjoin(char const *s1, char const *s2);
 char    *preline(char *buffer);
 char    *postline(char *buffer);
-char    *checkandsplit(char *buffer, char *storj, char *line);
+char    *checkandsplit(char *buffer, char *line);
 size_t	ft_strlcpy(char *dest, const char *src, size_t destsize);
 char    *storjGet(char *storj);
 void    *ft_calloc(size_t count);
