@@ -8,10 +8,11 @@ char *get_next_line(int fd);
 int main() {
     int fd;
     char *line;
+    int i = 8;
 
     fd = open("textfile.txt", O_RDONLY);
 
-    while(1)
+    while(i--)
     {
         if ((line = get_next_line(fd)) == 0)
             break;

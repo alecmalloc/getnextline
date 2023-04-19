@@ -8,7 +8,7 @@
 #include <stdio.h>
 
 // delete when PUSH !
-#define BUFFER_SIZE 200
+#define BUFFER_SIZE 4
 
 char    *get_next_line(int fd);
 int     is_next_line(char *str);
