@@ -1,19 +1,5 @@
 #include "get_next_line.h"
 
-int     is_next_line(char *str)
-{
-    int i;
-
-    i = 0;
-    while (str[i])
-    {
-        if (str[i] == '\n')
-            return (1);
-        i++;
-    }
-    return (0);
-}
-
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*concat_str;
@@ -53,57 +39,6 @@ size_t	ft_strlen(const char *s)
 	return (x);
 }
 
-char    *checkandsplit(char *buffer, char *line)
-{
-	char *resPreline;
-
-	resPreline = preline(buffer);
-    line = ft_strjoin(line, resPreline);
-	free(resPreline);
-    return(line);
-}
-
-char *preline(char *buffer)
-{
-	int i;
-	char *preline;
-    if (!buffer)
-        return (0);
-    i = 0;
-    while (buffer[i] && buffer[i] != '\n')
-        i++;
-    if (!buffer[i])
-        return (0);
-    if (!(preline = ft_calloc(sizeof(char) * (i + 1))))
-        return (0);
-    ft_strlcpy(preline, buffer, i + 1);
-    return (preline);
-}
-
-char *postline(char *buffer)
-{
-	int i;
-	int j;
-	char *postline;
-    if (!buffer)
-        return (0);
-
-    i = 0;
-    while (buffer[i] && buffer[i] != '\n')
-        i++;
-    if (!buffer[i])
-        return (0);
-    i++;
-    j = i;
-    while (buffer[i] && buffer[i] != '\n')
-        i++;
-    if(!(postline = ft_calloc(sizeof(char) * (i - j + 1))))
-        return (0);
-    ft_strlcpy(postline, buffer + j, (i - j + 1));
-    postline[i - j] = '\0';
-    return (postline);
-}
-
 size_t	ft_strlcpy(char *dest, const char *src, size_t destsize)
 {
 	size_t	i;
@@ -120,21 +55,45 @@ size_t	ft_strlcpy(char *dest, const char *src, size_t destsize)
 	return (ft_strlen(src));
 }
 
-char *storjGet(char *storj)
+size_t ft_strladd(char *dest, const char *src, size_t destsize)
 {
-	int i;
-	int lenPart;
-	char *thatPart;
+    size_t destlen;
+    size_t srclen;
+    size_t i = destlen;
+    size_t j = 0;
 
-	i = (ft_strlen(storj));
-	while (storj[i] != '\n')
-		i--;
+	srclen = ft_strlen(src);
+	destlen = ft_strlen(dest);
 
-	thatPart = (storj + i + 1);
+    if (destsize == 0)
+        return srclen;
 
-	printf("thatPart .%s. \n", thatPart);
-	return (thatPart);
+    while (j <= (destsize - destlen - 1) && src[j] != '\0')
+    {
+        dest[i] = src[j];
+        i++;
+        j++;
+    }
+
+    dest[i] = '\0';
+
+    return srclen;
 }
+
+
+void ft_strcat(char *dest, const char *src)
+{
+    size_t dest_len = ft_strlen(dest);
+    size_t src_len = ft_strlen(src);
+    size_t i = 0;
+
+    while (src[i] != '\0') {
+        dest[dest_len + i] = src[i];
+        i++;
+    }
+    dest[dest_len + i] = '\0';
+}
+
 
 void	*ft_calloc(size_t count)
 {

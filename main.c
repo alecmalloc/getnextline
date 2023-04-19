@@ -8,16 +8,13 @@ char *get_next_line(int fd);
 int main() {
     int fd;
     char *line;
-    int i = 8;
+    int i = 7;
 
     fd = open("textfile.txt", O_RDONLY);
 
     while(i--)
     {
-        line = get_next_line(fd);
-        printf("OUTPUT: %s \n", line);
-        printf("------------------------ \n");
-        free(line);
+        get_next_line(fd);
     }
 
     close(fd);
