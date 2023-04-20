@@ -1,32 +1,5 @@
 #include "get_next_line.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
-{
-	char	*concat_str;
-	int		i;
-	int		j;
-
-	i = 0;
-	j = 0;
-	if (s1 == 0 || s2 == 0)
-		return (0);
-	if(!(concat_str = ft_calloc(sizeof(char) * ((ft_strlen(s1) + ft_strlen(s2)) + 1))))
-		return (0);
-	while (s1[i] != '\0')
-	{
-		concat_str[i] = s1[i];
-		i++;
-	}
-	while (s2[j] != '\0')
-	{
-		concat_str[i] = s2[j];
-		i++;
-		j++;
-	}
-	concat_str[i] = '\0';
-	return (concat_str);
-}
-
 size_t	ft_strlen(const char *s)
 {
 	size_t	x;
@@ -37,47 +10,6 @@ size_t	ft_strlen(const char *s)
 		x++;
 	}
 	return (x);
-}
-
-size_t	ft_strlcpy(char *dest, const char *src, size_t destsize)
-{
-	size_t	i;
-
-	i = 0;
-	if (destsize == 0)
-		return (ft_strlen(src));
-	while (src[i] != '\0' && i < (destsize - 1))
-	{
-		dest[i] = src[i];
-		i++;
-	}
-	dest[i] = '\0';
-	return (ft_strlen(src));
-}
-
-size_t ft_strladd(char *dest, const char *src, size_t destsize)
-{
-    size_t destlen;
-    size_t srclen;
-    size_t i = destlen;
-    size_t j = 0;
-
-	srclen = ft_strlen(src);
-	destlen = ft_strlen(dest);
-
-    if (destsize == 0)
-        return srclen;
-
-    while (j <= (destsize - destlen - 1) && src[j] != '\0')
-    {
-        dest[i] = src[j];
-        i++;
-        j++;
-    }
-
-    dest[i] = '\0';
-
-    return srclen;
 }
 
 
@@ -134,7 +66,7 @@ char *beforenewline(char *storj, char *line)
 	}
 	storj++;
 	line[j] = '\0';
-	ft_memmove(storj - j, storj, storjlen -  + 1);
+	ft_memmove(storj - j - 1, storj, storjlen - j + 1);
 	return (line);
 }
 
