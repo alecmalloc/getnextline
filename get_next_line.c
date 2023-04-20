@@ -18,6 +18,19 @@ char    *get_next_line(int fd)
         ft_strcat(storj, buffer);
         ft_bzero(buffer, BUFFER_SIZE + 1);
     }
-    line = beforenewline(storj, line);
+    if (ft_strlen(storj) == 0)
+    {
+        free(buffer);
+        free(line);
+        return (NULL);
+    }
+    if (isnewline(storj))
+        line = beforenewline(storj, line);
+    else
+        {
+            line = beforenewline(storj, line);
+            ft_bzero(storj, ft_strlen(storj));
+        }
+    free (buffer);
     return (line);
 }

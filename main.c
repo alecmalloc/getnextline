@@ -13,25 +13,29 @@ int main() {
     fd = open("textfile.txt", O_RDONLY);
 
     line = get_next_line(fd);
-    printf("%s \n", line);
+    printf("%s", line);
 
     line = get_next_line(fd);
-    printf("%s \n", line);
+    printf("%s", line);
 
     line = get_next_line(fd);
-    printf("%s \n", line);
+    printf("%s", line);
 
     line = get_next_line(fd);
-    printf("%s \n", line);
+    printf("%s", line);
 
     line = get_next_line(fd);
-    printf("%s \n", line);
+    printf("%s", line);
 
     line = get_next_line(fd);
-    printf("%s \n", line);
+    printf("%s", line);
 
     line = get_next_line(fd);
-    printf("%s \n", line);
+    printf("%s", line);
+
+    line = get_next_line(fd);
+    printf("%s", line);
+
 
     free(line);
     close(fd);

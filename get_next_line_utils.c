@@ -16,7 +16,6 @@ size_t	ft_strlen(const char *s)
 void ft_strcat(char *dest, const char *src)
 {
     size_t dest_len = ft_strlen(dest);
-    size_t src_len = ft_strlen(src);
     size_t i = 0;
 
     while (src[i] != '\0') {
@@ -64,10 +63,26 @@ char *beforenewline(char *storj, char *line)
 		j++;
 		storj++;
 	}
+	line[j] = *storj;
+	j++;
 	storj++;
 	line[j] = '\0';
-	ft_memmove(storj - j - 1, storj, storjlen - j + 1);
+	ft_memmove(storj - j, storj, storjlen - j + 1);
 	return (line);
+}
+
+int	isnewline(char *string)
+{
+	int i;
+
+	i = 0;
+	while (string[i])
+	{
+		if (string[i] == '\n')
+			return (1);
+		i++;
+	}
+	return (0);
 }
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
