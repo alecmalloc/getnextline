@@ -12,10 +12,8 @@ int main() {
 
     fd = open("textfile.txt", O_RDONLY);
 
-    while(i--)
-    {
-        get_next_line(fd);
-    }
+    line = get_next_line(fd);
+    printf("%s", line);
 
     close(fd);
     return (0);

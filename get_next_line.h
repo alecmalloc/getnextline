@@ -8,7 +8,7 @@
 #include <stdio.h>
 
 // delete when PUSH !
-#define BUFFER_SIZE 100
+#define BUFFER_SIZE 15
 
 char    *get_next_line(int fd);
 size_t	ft_strlen(const char *s);
