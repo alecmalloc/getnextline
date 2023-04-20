@@ -118,3 +118,55 @@ void	ft_bzero(void *s, int n)
 		n--;
 	}
 }
+
+char *beforenewline(char *storj, char *line)
+{
+	int j;
+	int storjlen;
+
+	j = 0;
+	storjlen = ft_strlen(storj);
+	while ((*storj != '\n') && (*storj) && (j < storjlen))
+	{
+		line[j] = *storj;
+		j++;
+		storj++;
+	}
+	storj++;
+	line[j] = '\0';
+	ft_memmove(storj - j, storj, storjlen -  + 1);
+	return (line);
+}
+
+void	*ft_memmove(void *dst, const void *src, size_t len)
+{
+	const unsigned char	*p_src;
+	unsigned char		*p_dest;
+
+	p_dest = dst;
+	p_src = src;
+	if (dst == NULL && src == NULL)
+		return (NULL);
+	if (p_dest > p_src)
+	{
+		while (len-- > 0)
+		{
+			p_dest[len] = p_src[len];
+		}
+	}
+	else
+		ft_memcpy(p_dest, p_src, len);
+	return (dst);
+}
+
+void	*ft_memcpy(void *dest, const void *src, size_t n)
+{
+	char	*tmpd;
+	char	*tmps;
+
+	tmpd = (char *)dest;
+	tmps = (char *)src;
+	while (n--)
+		*(tmpd++) = *(tmps++);
+	return (dest);
+}

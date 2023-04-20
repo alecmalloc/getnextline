@@ -13,8 +13,15 @@ int main() {
     fd = open("textfile.txt", O_RDONLY);
 
     line = get_next_line(fd);
-    printf("%s", line);
+    printf("%s \n", line);
 
+    line = get_next_line(fd);
+    printf("%s \n", line);
+
+    line = get_next_line(fd);
+    printf("%s \n", line);
+
+    free(line);
     close(fd);
     return (0);
 }

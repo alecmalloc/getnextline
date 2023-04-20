@@ -18,5 +18,6 @@ char    *get_next_line(int fd)
         ft_strcat(storj, buffer);
         ft_bzero(buffer, BUFFER_SIZE + 1);
     }
-    return (storj);
+    line = beforenewline(storj, line);
+    return (line);
 }
