@@ -16,7 +16,6 @@ char    *get_next_line(int fd)
     if (ft_strlen(storj) > 0)
     {
         line = storjbeforenl(storj, line);
-        ft_bzero(storj, ft_strlen(storj));
     }
     while ((read_ret = read(fd, buffer, BUFFER_SIZE)) > 0)
     {
@@ -28,6 +27,7 @@ char    *get_next_line(int fd)
         else
             return (0);
     }
+    // printf("storj: %s \n", storj);
     free(buffer);
     return (line);
 }

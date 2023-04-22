@@ -8,19 +8,31 @@ char *get_next_line(int fd);
 int main() {
     int fd;
     char *line;
-    int i = 7;
 
     fd = open("textfile.txt", O_RDONLY);
 
     line = get_next_line(fd);
     printf("%s", line);
     printf("------------------- \n");
-
-    line = get_next_line(fd);
+        line = get_next_line(fd);
     printf("%s", line);
     printf("------------------- \n");
-
-    line = get_next_line(fd);
+        line = get_next_line(fd);
+    printf("%s", line);
+    printf("------------------- \n");
+        line = get_next_line(fd);
+    printf("%s", line);
+    printf("------------------- \n");
+        line = get_next_line(fd);
+    printf("%s", line);
+    printf("------------------- \n");
+        line = get_next_line(fd);
+    printf("%s", line);
+    printf("------------------- \n");
+        line = get_next_line(fd);
+    printf("%s", line);
+    printf("------------------- \n");
+        line = get_next_line(fd);
     printf("%s", line);
     printf("------------------- \n");
 
