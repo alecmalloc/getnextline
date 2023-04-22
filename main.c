@@ -12,28 +12,28 @@ int main() {
     fd = open("textfile.txt", O_RDONLY);
 
     line = get_next_line(fd);
-    printf("%s", line);
+    printf("output %s", line);
     printf("------------------- \n");
-        line = get_next_line(fd);
-    printf("%s", line);
+    line = get_next_line(fd);
+    printf("output %s", line);
     printf("------------------- \n");
-        line = get_next_line(fd);
-    printf("%s", line);
+    line = get_next_line(fd);
+    printf("output %s", line);
     printf("------------------- \n");
-        line = get_next_line(fd);
-    printf("%s", line);
+    line = get_next_line(fd);
+    printf("output %s", line);
     printf("------------------- \n");
-        line = get_next_line(fd);
-    printf("%s", line);
+    line = get_next_line(fd);
+    printf("output %s", line);
     printf("------------------- \n");
-        line = get_next_line(fd);
-    printf("%s", line);
+    line = get_next_line(fd);
+    printf("output %s", line);
     printf("------------------- \n");
-        line = get_next_line(fd);
-    printf("%s", line);
+    line = get_next_line(fd);
+    printf("output %s", line);
     printf("------------------- \n");
-        line = get_next_line(fd);
-    printf("%s", line);
+    line = get_next_line(fd);
+    printf("output %s", line);
     printf("------------------- \n");
 
 

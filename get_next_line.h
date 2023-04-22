@@ -8,7 +8,7 @@
 #include <stdio.h>
 
 // delete when PUSH !
-# define BUFFER_SIZE 9999
+# define BUFFER_SIZE 7
 
 char    *get_next_line(int fd);
 size_t	ft_strlen(const char *s);
@@ -20,5 +20,6 @@ void	*ft_memmove(void *dst, const void *src, size_t len);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
 int     isnewline(char *string);
 char	*storjbeforenl(char *storj, char *line);
+char	*ft_strjoin(char const *s1, char const *s2);
 
 #endif

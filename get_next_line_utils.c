@@ -54,18 +54,22 @@ char *beforenewline(char *line, char *buffer, char *storj)
 {
 	int i;
 	int bufflen;
+	int linelen;
 
 	i = 0;
+
+	linelen = ft_strlen(line);
 	bufflen = ft_strlen(buffer);
 	while (buffer[i] && buffer[i] != '\n' && i < bufflen)
 	{
-		line[i] = buffer[i];
+		line[linelen] = buffer[i];
 		i++;
+		linelen++;
 	}
-	line[i] = buffer[i];
-	i++;
-	line[i] = '\0';
-	ft_memmove(storj, buffer + i, ft_strlen(buffer + i) + 1);
+	line[linelen] = buffer[i];
+	linelen++;
+	line[linelen] = '\0';
+	ft_memmove(storj, buffer + i + 1, ft_strlen(buffer + i + 1) + 1);
 	return (line);
 }
 
@@ -133,4 +137,32 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	while (n--)
 		*(tmpd++) = *(tmps++);
 	return (dest);
+}
+
+char	*ft_strjoin(char const *s1, char const *s2)
+{
+	char	*concat_str;
+	int		i;
+	int		j;
+
+	i = 0;
+	j = 0;
+	if (s1 == NULL || s2 == NULL)
+		return (NULL);
+	concat_str = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2)) + 1);
+	if (!concat_str)
+		return (NULL);
+	while (s1[i] != '\0')
+	{
+		concat_str[i] = s1[i];
+		i++;
+	}
+	while (s2[j] != '\0')
+	{
+		concat_str[i] = s2[j];
+		i++;
+		j++;
+	}
+	concat_str[i] = '\0';
+	return (concat_str);
 }

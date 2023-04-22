@@ -14,20 +14,20 @@ char    *get_next_line(int fd)
     if (!(line = ft_calloc(sizeof(char) * (BUFFER_SIZE + 1))))
         return (0);
     if (ft_strlen(storj) > 0)
-    {
         line = storjbeforenl(storj, line);
-    }
     while ((read_ret = read(fd, buffer, BUFFER_SIZE)) > 0)
     {
         if (isnewline(buffer))
         {
             line = beforenewline(line, buffer, storj);
             ft_bzero(buffer, BUFFER_SIZE + 1);
+            break;
         }
-        else
-            return (0);
+        line = ft_strjoin(line, buffer);
+        ft_bzero(buffer, BUFFER_SIZE + 1);
     }
-    // printf("storj: %s \n", storj);
+    if (read_ret == 0)
+        return (0);
     free(buffer);
     return (line);
 }
