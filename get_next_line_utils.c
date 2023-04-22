@@ -50,24 +50,41 @@ void	ft_bzero(void *s, int n)
 	}
 }
 
-char *beforenewline(char *storj, char *line)
+char *beforenewline(char *line, char *buffer, char *storj)
 {
-	int j;
+	int i;
+	int bufflen;
+
+	i = 0;
+	bufflen = ft_strlen(buffer);
+	while (buffer[i] && buffer[i] != '\n' && i < bufflen)
+	{
+		line[i] = buffer[i];
+		i++;
+	}
+	line[i] = buffer[i];
+	i++;
+	line[i] = '\0';
+	ft_memmove(storj, buffer + i, ft_strlen(buffer + i) + 1);
+	return (line);
+}
+
+char	*storjbeforenl(char *storj, char *line)
+{
+	int i;
 	int storjlen;
 
-	j = 0;
+	i = 0;
 	storjlen = ft_strlen(storj);
-	while ((*storj != '\n') && (*storj) && (j < storjlen))
+	while (storj[i] && storj[i] != '\n' && i < storjlen)
 	{
-		line[j] = *storj;
-		j++;
-		storj++;
+		line[i] = storj[i];
+		i++;
 	}
-	line[j] = *storj;
-	j++;
-	storj++;
-	line[j] = '\0';
-	ft_memmove(storj - j, storj, storjlen - j + 1);
+	line[i] = storj[i];
+	i++;
+	line[i] = '\0';
+	ft_memmove(storj, storj + i, ft_strlen(storj + 1));
 	return (line);
 }
 

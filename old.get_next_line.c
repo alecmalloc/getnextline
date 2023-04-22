@@ -13,21 +13,24 @@ char    *get_next_line(int fd)
         return (0);
     if (!(line = ft_calloc(sizeof(char) * (BUFFER_SIZE + 1))))
         return (0);
-    if (ft_strlen(storj) > 0)
-    {
-        line = storjbeforenl(storj, line);
-        ft_bzero(storj, ft_strlen(storj));
-    }
     while ((read_ret = read(fd, buffer, BUFFER_SIZE)) > 0)
     {
-        if (isnewline(buffer))
-        {
-            line = beforenewline(line, buffer, storj);
-            ft_bzero(buffer, BUFFER_SIZE + 1);
-        }
-        else
-            return (0);
+        ft_strcat(storj, buffer);
+        ft_bzero(buffer, BUFFER_SIZE + 1);
     }
-    free(buffer);
+    if (ft_strlen(storj) == 0)
+    {
+        free(buffer);
+        free(line);
+        return (NULL);
+    }
+    if (isnewline(storj))
+        line = beforenewline(storj, line);
+    else
+        {
+            line = beforenewline(storj, line);
+            ft_bzero(storj, ft_strlen(storj));
+        }
+    free (buffer);
     return (line);
 }
