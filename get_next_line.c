@@ -23,12 +23,16 @@ char    *get_next_line(int fd)
             ft_bzero(buffer, BUFFER_SIZE + 1);
             break;
         }
-        line = ft_strjoin(line, buffer);
+        line = ft_strjoin(line, buffer, line);
         ft_bzero(buffer, BUFFER_SIZE + 1);
     }
     if (read_ret == 0)
     {
         free(buffer);
+        if (ft_strlen(line) > 0)
+        {
+            return (line);
+        }
         return (0);
     }
     free(buffer);

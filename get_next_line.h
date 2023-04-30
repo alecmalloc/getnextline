@@ -20,6 +20,6 @@ void	*ft_memmove(void *dst, const void *src, size_t len);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
 int     isnewline(char *string);
 char	*storjbeforenl(char *storj, char *line);
-char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strjoin(char const *s1, char const *s2, char *line);
 
 #endif
