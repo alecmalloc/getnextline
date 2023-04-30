@@ -52,21 +52,24 @@ void	ft_bzero(void *s, int n)
 
 char *beforenewline(char *line, char *buffer, char *storj)
 {
-    int i = 0;
-    int bufflen = ft_strlen(buffer);
-    int linelen = ft_strlen(line);
-    
+    int i;
+    int bufflen;
+    int linelen;
+	char *templine;
+	
+	i = 0;
+	bufflen = ft_strlen(buffer);
+	linelen = ft_strlen(line);
+	if(!(templine = ft_calloc(sizeof(char) * (ft_strlen(buffer) + ft_strlen(line) + 1))))
+		return (0);
+	ft_memcpy(templine, line, ft_strlen(line) + 1);
+	free(line);
     while (i < bufflen && buffer[i] != '\n')
-    {
-        line[linelen++] = buffer[i++];
-    }
+        templine[linelen++] = buffer[i++];
     if (i < bufflen)
-    {
-        line[linelen++] = buffer[i];
-    }
-    line[linelen] = '\0';
+        templine[linelen++] = buffer[i];
     ft_memmove(storj, buffer + i + 1, ft_strlen(buffer + i + 1) + 1);
-    return (line);
+    return (templine);
 }
 
 char	*storjbeforenl(char *storj, char *line)

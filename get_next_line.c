@@ -20,21 +20,14 @@ char    *get_next_line(int fd)
         if (isnewline(buffer))
         {
             line = beforenewline(line, buffer, storj);
-            ft_bzero(buffer, BUFFER_SIZE + 1);
             break;
         }
         line = ft_strjoin(line, buffer, line);
-        ft_bzero(buffer, BUFFER_SIZE + 1);
-    }
-    if (read_ret == 0)
-    {
-        free(buffer);
-        if (ft_strlen(line) > 0)
-        {
-            return (line);
-        }
-        return (0);
     }
     free(buffer);
+    if (read_ret == 0 && ft_strlen(line) > 0)
+        return (line);
+    if (read_ret == 0)
+        return (0);
     return (line);
 }
