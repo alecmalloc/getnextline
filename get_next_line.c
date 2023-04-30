@@ -27,7 +27,10 @@ char    *get_next_line(int fd)
         ft_bzero(buffer, BUFFER_SIZE + 1);
     }
     if (read_ret == 0)
+    {
+        free(buffer);
         return (0);
+    }
     free(buffer);
     return (line);
 }
