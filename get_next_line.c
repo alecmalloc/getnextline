@@ -2,10 +2,12 @@
 
 char    *get_next_line(int fd)
 {
-    int read_ret;
+    static int read_ret;
     char *buffer;
     char *line;
     static char storj[BUFFER_SIZE + 1];
+
+  //  printf("------------- \n");
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
 		return (0);
@@ -20,14 +22,21 @@ char    *get_next_line(int fd)
         if (isnewline(buffer))
         {
             line = beforenewline(line, buffer, storj);
-            break;
+            free(buffer);
+            return (line);
         }
+     //   printf("buff:%s", buffer);
+        printf("r:%d", read_ret);
         line = ft_strjoin(line, buffer, line);
     }
+    printf("storj: .%s. \n", storj);
     free(buffer);
-    if (read_ret == 0 && ft_strlen(line) > 0)
-        return (line);
-    if (read_ret == 0)
-        return (0);
-    return (line);
+    if (read_ret < BUFFER_SIZE && ft_strlen(line) > BUFFER_SIZE && read_ret != 0)
+    {
+        printf("bla");
+        return (ft_trim(line, BUFFER_SIZE - read_ret));
+
+    }
+    if read_ret()
+
 }

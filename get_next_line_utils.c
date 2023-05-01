@@ -50,6 +50,24 @@ void	ft_bzero(void *s, int n)
 	}
 }
 
+
+char *ft_trim(char *str, int trim)
+{
+	int lenstr;
+
+	lenstr = ft_strlen(str);
+
+	if (trim > lenstr)
+    	trim = lenstr;
+		
+	while (trim--)
+	{
+		str[lenstr] = '\0';
+		lenstr--;
+	}
+	return (str);
+}
+
 char *beforenewline(char *line, char *buffer, char *storj)
 {
     int i;
@@ -67,8 +85,10 @@ char *beforenewline(char *line, char *buffer, char *storj)
     while (i < bufflen && buffer[i] != '\n')
         templine[linelen++] = buffer[i++];
     if (i < bufflen)
+	{
         templine[linelen++] = buffer[i];
-    ft_memmove(storj, buffer + i + 1, ft_strlen(buffer + i + 1) + 1);
+    	ft_memmove(storj, buffer + i + 1, ft_strlen(buffer + i + 1) + 1);
+	}
     return (templine);
 }
 
@@ -79,7 +99,7 @@ char	*storjbeforenl(char *storj, char *line)
 
 	i = 0;
 	storjlen = ft_strlen(storj);
-	while (storj[i] && storj[i] != '\n' && i < storjlen)
+	while (storj[i] && i < storjlen)
 	{
 		line[i] = storj[i];
 		i++;

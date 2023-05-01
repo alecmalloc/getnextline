@@ -14,7 +14,7 @@ int main() {
     line = get_next_line(fd);
     while (line)
     {
-        printf("%s", line);
+        printf("OUTPUT: |%s|", line);
         free(line);
         line = get_next_line(fd);
     }
