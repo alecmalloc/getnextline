@@ -17,6 +17,7 @@ char    *get_next_line(int fd)
         return (0);
     if (ft_strlen(storj) > 0)
         line = storjbeforenl(storj, line);
+    printf("storj: %s", storj);
     while ((read_ret = read(fd, buffer, BUFFER_SIZE)) > 0)
     {
         if (isnewline(buffer))
@@ -32,11 +33,7 @@ char    *get_next_line(int fd)
     printf("storj: .%s. \n", storj);
     free(buffer);
     if (read_ret < BUFFER_SIZE && ft_strlen(line) > BUFFER_SIZE && read_ret != 0)
-    {
-        printf("bla");
         return (ft_trim(line, BUFFER_SIZE - read_ret));
-
-    }
-    if read_ret()
+    return (0);
 
 }
